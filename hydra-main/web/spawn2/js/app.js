@@ -236,9 +236,6 @@ function(
                         user: username,
                         token: token
                     },
-                    success: function(response) {
-                        window.location=app.authprefix() + "/spawn2/login.html";
-                    }
                 });
             }
             Cookies.set("username", "", {expires:0});
@@ -250,8 +247,10 @@ function(
             app.user.set("username", "");
             app.user.set("token", "");
             app.user.set("sudo", "");
-            clearTimeout(loginTimeout);
-            clearTimeout(sudoTimeout);
+            clearTimeout(app.loginTimeoutId);
+            clearTimeout(app.sudoTimeoutId);
+            app.loginTimeoutId = null;
+            app.sudoTimeoutId = null;
         },
         authQueryParameters:function(parameters) {
             var user = app.user.get("username");
