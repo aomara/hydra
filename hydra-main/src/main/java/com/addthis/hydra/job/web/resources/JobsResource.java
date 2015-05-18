@@ -16,6 +16,7 @@ package com.addthis.hydra.job.web.resources;
 import javax.annotation.Nonnull;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -116,21 +117,21 @@ public class JobsResource {
         }
     }
 
-    @GET
+    @POST
     @Path("/permissions")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response changePermissions(@QueryParam("jobs") String jobarg,
-                                      @QueryParam("owner") String owner,
-                                      @QueryParam("group") String group,
-                                      @QueryParam("ownerWritable") String ownerWritable,
-                                      @QueryParam("groupWritable") String groupWritable,
-                                      @QueryParam("worldWritable") String worldWritable,
-                                      @QueryParam("ownerExecutable") String ownerExecutable,
-                                      @QueryParam("groupExecutable") String groupExecutable,
-                                      @QueryParam("worldExecutable") String worldExecutable,
-                                      @QueryParam("user") String user,
-                                      @QueryParam("token") String token,
-                                      @QueryParam("sudo") String sudo) {
+    public Response changePermissions(@FormParam("jobs") String jobarg,
+                                      @FormParam("owner") String owner,
+                                      @FormParam("group") String group,
+                                      @FormParam("ownerWritable") String ownerWritable,
+                                      @FormParam("groupWritable") String groupWritable,
+                                      @FormParam("worldWritable") String worldWritable,
+                                      @FormParam("ownerExecutable") String ownerExecutable,
+                                      @FormParam("groupExecutable") String groupExecutable,
+                                      @FormParam("worldExecutable") String worldExecutable,
+                                      @FormParam("user") String user,
+                                      @FormParam("token") String token,
+                                      @FormParam("sudo") String sudo) {
         if (jobarg == null) {
             return Response.status(Response.Status.BAD_REQUEST).entity("Missing 'jobs' parameter").build();
         }

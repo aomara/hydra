@@ -1465,7 +1465,7 @@ function(
             app.authQueryParameters(parameters);
             $.ajax({
                 url: "/job/permissions",
-                type: "GET",
+                type: "POST",
                 data: parameters,
                 dataType: "json"
             }).done(function(data) {
@@ -1823,7 +1823,7 @@ function(
             app.authQueryParameters(parameters);
             $.ajax({
                 url: "/job/permissions",
-                type: "GET",
+                type: "POST",
                 data: parameters,
                 dataType: "json"
             }).done(function(data) {
